@@ -1,0 +1,16 @@
+fastlane_version "2.59.0"
+
+default_platform :android
+
+platform :android do
+
+  before_all do
+	gradle(task: "clean")
+	gradle(task: "build")
+  end
+
+  desc "Run unit tests"
+  lane :unitTests do
+    gradle(task: "testDebugUnitTest")
+  end
+end

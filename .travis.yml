@@ -1,0 +1,39 @@
+# Do not remove commented code because it's going to be used to run
+# instrumentation tests and the implementation is finished and tested
+
+language: android
+jdk: oraclejdk8
+sudo: false
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - tools
+    - build-tools-26.0.2
+#    - android-19
+    - android-27
+    - extra
+    - add-on
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - extra-google-google_play_services
+    # Support library
+    - extra-android-support
+    # Use latest artifacts in local repository
+    - addon-google_apis-google-27
+#    - addon-google_apis-google-19
+#    - sys-img-armeabi-v7a-android-19
+
+  licenses:
+      - 'android-sdk-preview-license-52d11cd2'
+      - 'android-sdk-.+'
+      - 'google-gdk-license.+'
+
+before_install: "chmod +x ./buildsystem/travis_script.sh && ./buildsystem/travis_script.sh beforeInstall"
+
+install: gem install fastlane
+
+# before_script: "./buildsystem/travis_script.sh startEmulator"
+
+script: "./buildsystem/travis_script.sh fastlaneScripts"
