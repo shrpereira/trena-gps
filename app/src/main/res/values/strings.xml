@@ -7,10 +7,10 @@
 
 	<string name="real_time">Tempo Real</string>
 	<string name="stop">Parar</string>
-	<string name="loading">Carregando…</string>
 	<string name="define_name">Definir nome</string>
 	<string name="cancel">Descartar</string>
 	<string name="save">Salvar</string>
 	<string name="saved_successfully">Gravado com sucesso</string>
 	<string name="you_should_move_yourself">Você deve se mover.</string>
+	<string name="meters">metros</string>
 </resources>

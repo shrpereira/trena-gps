@@ -13,9 +13,9 @@ import com.pedrogomez.renderers.Renderer
 
 class MeasuredItemRenderer : Renderer<MeasuredItem>() {
 
-    lateinit var iconView: ImageView
-    lateinit var titleView: TextView
-    lateinit var distanceView: TextView
+    private lateinit var iconView: ImageView
+    private lateinit var titleView: TextView
+    private lateinit var distanceView: TextView
 
     override fun inflate(inflater: LayoutInflater, parent: ViewGroup): View {
         return inflater.inflate(R.layout.list_item_measurement, parent, false)

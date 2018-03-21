@@ -5,7 +5,6 @@
 	android:layout_width="match_parent"
 	android:layout_height="440dp"
 	android:background="@drawable/background_gradient"
-	android:orientation="vertical"
 	tools:context="br.com.intelize.trenagps.ui.finish.SaveOrCancelActivity">
 
 	<FrameLayout
@@ -42,7 +41,7 @@
 				android:layout_below="@+id/measuredValue"
 				android:layout_centerHorizontal="true"
 				android:lineSpacingMultiplier="1.17"
-				android:text="metros"
+				android:text="@string/meters"
 				android:textAppearance="@style/Arial"
 				android:textColor="@color/colorDetails"
 				android:textSize="12sp" />
@@ -67,7 +66,8 @@
 			android:textAllCaps="true"
 			android:textAppearance="@style/Arial"
 			android:textColor="@color/cancelButtonText"
-			android:textSize="12sp" />
+			android:textSize="12sp"
+			tools:ignore="ButtonStyle" />
 
 		<Button
 			android:id="@+id/saveButton"
@@ -79,7 +79,8 @@
 			android:textAllCaps="true"
 			android:textAppearance="@style/Arial"
 			android:textColor="@color/acceptButtonText"
-			android:textSize="12sp" />
+			android:textSize="12sp"
+			tools:ignore="ButtonStyle" />
 
 	</LinearLayout>
 

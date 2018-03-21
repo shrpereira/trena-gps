@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.intelize.trenagps.R.layout.fragment_realtime
-import br.com.intelize.trenagps.ui.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_realtime.*
 
 class RealtimeFragment : Fragment() {
@@ -32,7 +31,7 @@ class RealtimeFragment : Fragment() {
 
     private fun configureAction() {
         innerCircle.setOnClickListener {
-//            (activity as MainActivity).redirectToSaveScreen()
+            //            (activity as MainActivity).redirectToSaveScreen()
         }
     }
 }

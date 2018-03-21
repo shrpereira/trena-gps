@@ -1,6 +1,7 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:aapt="http://schemas.android.com/aapt"
-        android:width="4dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:width="4dp"
         android:height="16dp"
         android:viewportWidth="4.0"
         android:viewportHeight="16.0">
@@ -9,19 +10,22 @@ xmlns:aapt="http://schemas.android.com/aapt"
         android:strokeColor="#00000000"
         android:fillType="evenOdd"
         android:fillColor="#FAFAFA"
-        android:strokeWidth="1"/>
+        android:strokeWidth="1"
+        tools:targetApi="n" />
     <path
         android:pathData="M32,-45l-360,0l0,332l360,0z"
         android:strokeColor="#00000000"
         android:fillType="evenOdd"
         android:fillAlpha="1"
         android:fillColor="#000000"
-        android:strokeWidth="1"/>
+        android:strokeWidth="1"
+        tools:targetApi="n" />
     <path
         android:pathData="M32,-45l-360,0l0,332l360,0z"
         android:strokeColor="#00000000"
         android:fillType="evenOdd"
-        android:strokeWidth="1">
+        android:strokeWidth="1"
+        tools:targetApi="n">
         <aapt:attr name="android:fillColor">
 <gradient 
 
@@ -29,14 +33,18 @@ xmlns:aapt="http://schemas.android.com/aapt"
         android:startX="-476.0"
         android:endY="242.0"
         android:endX="-476.0"
-        android:type="linear">
-<item android:offset="0.0" android:color="#FF383970" />
-<item android:offset="1.0" android:color="#FF181836" />
+        android:type="linear"
+    tools:targetApi="n">
+<item android:offset="0.0" android:color="#FF383970"
+    tools:targetApi="n" />
+<item android:offset="1.0" android:color="#FF181836"
+    tools:targetApi="n" />
             </gradient></aapt:attr></path>
     <path
         android:pathData="M2,4C3.1,4 4,3.1 4,2C4,0.9 3.1,0 2,0C0.9,0 0,0.9 0,2C0,3.1 0.9,4 2,4L2,4ZM2,6C0.9,6 0,6.9 0,8C0,9.1 0.9,10 2,10C3.1,10 4,9.1 4,8C4,6.9 3.1,6 2,6L2,6ZM2,12C0.9,12 0,12.9 0,14C0,15.1 0.9,16 2,16C3.1,16 4,15.1 4,14C4,12.9 3.1,12 2,12L2,12Z"
         android:strokeColor="#00000000"
         android:fillType="evenOdd"
         android:fillColor="#FFFFFF"
-        android:strokeWidth="1"/>
+        android:strokeWidth="1"
+        tools:targetApi="n" />
 </vector>
