@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="400dp"
+	android:layout_height="440dp"
 	android:background="@android:color/transparent"
-	android:gravity="center_horizontal"
-	android:orientation="vertical"
 	tools:background="@drawable/background_gradient">
 
 	<FrameLayout
+		android:id="@+id/circle_layout"
 		android:layout_width="180dp"
 		android:layout_height="180dp"
 		android:layout_marginTop="56dp"
-		android:background="@drawable/shape_outer_circle">
+		android:background="@drawable/shape_outer_circle"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
 
 		<RelativeLayout
 			android:id="@+id/innerCircle"
@@ -48,6 +51,7 @@
 	</FrameLayout>
 
 	<TextView
+		android:id="@+id/mode_label"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="64dp"
@@ -56,7 +60,10 @@
 		android:textAllCaps="true"
 		android:textAppearance="@style/Arial"
 		android:textColor="#DEFFFFFF"
-		android:textSize="12sp" />
+		android:textSize="12sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/circle_layout" />
 
 	<TextView
 		android:layout_width="wrap_content"
@@ -65,6 +72,9 @@
 		android:textAllCaps="true"
 		android:textAppearance="@style/Arial"
 		android:textColor="#DEFFFFFF"
-		android:textSize="20sp" />
+		android:textSize="20sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/mode_label" />
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

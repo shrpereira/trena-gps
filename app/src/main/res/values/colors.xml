@@ -9,5 +9,12 @@
 	<color name="textInitial">#DEFFFFFF</color>
 
 	<color name="divider">#FFDFDFDF</color>
+	<color name="pureWhite">#FFFFFF</color>
+	<color name="dimmedBackground">#AAAAAAAA</color>
+
+	<color name="acceptButton">#FFFFFFFF</color>
+	<color name="cancelButton">#38FFFFFF</color>
+	<color name="acceptButtonText">#FFEF4D8F</color>
+	<color name="cancelButtonText">#DEFFFFFF</color>
 
 </resources>

@@ -4,12 +4,18 @@
 		<item name="colorPrimary">@color/colorPrimary</item>
 		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 		<item name="colorAccent">@color/colorAccent</item>
-
-		<item name="android:windowTranslucentStatus">false</item>
+		<item name="android:windowTranslucentStatus">true</item>
 		<item name="android:windowTranslucentNavigation">false</item>
-		<item name="android:windowLightStatusBar">true</item>
-		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
 		<item name="android:statusBarColor">@android:color/transparent</item>
+	</style>
+
+	<style name="Theme.Transparent" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowBackground">@color/dimmedBackground</item>
+		<item name="android:windowContentOverlay">@null</item>
+		<item name="android:statusBarColor">@android:color/transparent</item>
+		<item name="android:windowTranslucentStatus">true</item>
+		<item name="android:windowTranslucentNavigation">false</item>
 	</style>
 
 	<style name="Arial" parent="android:TextAppearance">
