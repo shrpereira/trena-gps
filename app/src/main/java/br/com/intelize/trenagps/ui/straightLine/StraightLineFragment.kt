@@ -48,7 +48,8 @@ class StraightLineFragment : Fragment() {
                     setMeasuringOff()
                     (activity as MainActivity).redirectToSaveScreen(it)
                 } else {
-                    Toast.makeText(context, getString(R.string.you_should_move), Toast.LENGTH_SHORT).show()
+                    setMeasuringOff()
+                    Toast.makeText(context, getString(R.string.you_should_move_yourself), Toast.LENGTH_SHORT).show()
                 }
             }
         })

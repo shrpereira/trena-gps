@@ -12,5 +12,5 @@
 	<string name="cancel">Descartar</string>
 	<string name="save">Salvar</string>
 	<string name="saved_successfully">Gravado com sucesso</string>
-	<string name="you_should_move">Você deve se mover.</string>
+	<string name="you_should_move_yourself">Você deve se mover.</string>
 </resources>
