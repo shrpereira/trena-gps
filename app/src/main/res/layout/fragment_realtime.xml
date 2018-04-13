@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="440dp"
 	android:background="@android:color/transparent"
-	android:gravity="center_horizontal"
-	android:orientation="vertical"
 	tools:background="@drawable/background_gradient">
 
 	<FrameLayout
+		android:id="@+id/circle_layout"
 		android:layout_width="180dp"
 		android:layout_height="180dp"
 		android:layout_marginTop="56dp"
-		android:background="@drawable/shape_outer_circle">
+		android:background="@drawable/shape_outer_circle"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:layout_marginTop="92dp">
 
-		<FrameLayout
+		<RelativeLayout
 			android:id="@+id/innerCircle"
 			android:layout_width="150dp"
 			android:layout_height="150dp"
@@ -23,9 +27,10 @@
 			android:background="@drawable/shape_inner_circle">
 
 			<TextView
+				android:id="@+id/actionButtonText"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_gravity="center"
+				android:layout_centerInParent="true"
 				android:lineSpacingMultiplier="1.17"
 				android:text="@string/begin"
 				android:textAllCaps="true"
@@ -33,10 +38,21 @@
 				android:textColor="@color/textInitial"
 				android:textSize="24sp" />
 
-		</FrameLayout>
+			<ProgressBar
+				android:id="@+id/actionProgressBar"
+				android:layout_width="16dp"
+				android:layout_height="16dp"
+				android:layout_below="@id/actionButtonText"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="16dp"
+				android:translationZ="10dp"
+				android:visibility="gone" />
+
+		</RelativeLayout>
 	</FrameLayout>
 
 	<TextView
+		android:id="@+id/mode_label"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="64dp"
@@ -44,8 +60,11 @@
 		android:text="@string/mode"
 		android:textAllCaps="true"
 		android:textAppearance="@style/Arial"
-		android:textColor="@color/textInitial"
-		android:textSize="12sp" />
+		android:textColor="#DEFFFFFF"
+		android:textSize="12sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/circle_layout" />
 
 	<TextView
 		android:layout_width="wrap_content"
@@ -53,7 +72,23 @@
 		android:text="@string/real_time"
 		android:textAllCaps="true"
 		android:textAppearance="@style/Arial"
-		android:textColor="@color/textInitial"
-		android:textSize="20sp" />
+		android:textColor="#DEFFFFFF"
+		android:textSize="20sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/mode_label" />
 
-</LinearLayout>
+	<TextView
+		android:id="@+id/accuracyTextView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="36dp"
+		android:layout_marginEnd="8dp"
+		android:alpha="0.36"
+		android:textAppearance="@style/Arial"
+		android:textColor="#DEFFFFFF"
+		android:textSize="12sp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		tools:text="Precisão 3.00" />
+</android.support.constraint.ConstraintLayout>

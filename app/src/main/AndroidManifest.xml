@@ -27,7 +27,6 @@
 		</activity>
 		<activity
 			android:name=".ui.finish.SaveOrCancelActivity"
-			android:screenOrientation="portrait"
 			android:theme="@style/Theme.Transparent" />
 	</application>
 </manifest>

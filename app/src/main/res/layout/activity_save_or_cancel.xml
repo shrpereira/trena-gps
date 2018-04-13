@@ -111,6 +111,7 @@
 		android:backgroundTint="@color/pureWhite"
 		android:inputType="textCapWords"
 		android:textAlignment="center"
+		android:maxLength="36"
 		android:textAppearance="@style/Arial"
 		android:textColor="@color/textInitial"
 		android:textSize="20sp" />

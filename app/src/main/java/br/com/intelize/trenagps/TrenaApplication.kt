@@ -11,24 +11,26 @@ import org.koin.android.ext.android.startKoin
 @Suppress("unused")
 class TrenaApplication : Application() {
 
-    companion object {
-        lateinit var instance: TrenaApplication
+	companion object {
+		const val USER_PREFERENCES = "userPreferences"
 
-        fun getApplication(): TrenaApplication {
-            return instance
-        }
-    }
+		lateinit var instance: TrenaApplication
 
-    private val appModules = listOf(CommonModules, ViewModelModule, RepositoryModule)
+		fun getApplication(): TrenaApplication {
+			return instance
+		}
+	}
 
-    override fun onCreate() {
-        super.onCreate()
+	private val appModules = listOf(CommonModules, ViewModelModule, RepositoryModule)
 
-        instance = this
-        startKoin(this, appModules)
-    }
+	override fun onCreate() {
+		super.onCreate()
 
-    fun getSharedPreferences(name: String): SharedPreferences {
-        return applicationContext.getSharedPreferences(name, Context.MODE_PRIVATE)
-    }
+		instance = this
+		startKoin(this, appModules)
+	}
+
+	fun getSharedPreferences(name: String): SharedPreferences {
+		return applicationContext.getSharedPreferences(name, Context.MODE_PRIVATE)
+	}
 }

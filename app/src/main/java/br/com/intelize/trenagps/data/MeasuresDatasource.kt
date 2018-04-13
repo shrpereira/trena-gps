@@ -13,17 +13,17 @@ class MeasuresDatasource {
         private const val MEASURES_LIST = "measuresList"
     }
 
-    fun getMeasures(): MutableList<MeasuredItem> {
+    fun getMeasures(): List<MeasuredItem> {
         val measures = TrenaApplication.getApplication().getSharedPreferences(Companion.MEASURES_PREFERENCES).getString(MEASURES_LIST, "")
 
-        if (measures.isEmpty()) return mutableListOf()
+        if (measures.isEmpty()) return ArrayList()
 
         val listType = object : TypeToken<ArrayList<MeasuredItem>>() {}.type
         return Gson().fromJson(measures, listType)
     }
 
     fun addMeasure(measure: MeasuredItem) {
-        val measuresList = getMeasures()
+        val measuresList = getMeasures() as ArrayList<MeasuredItem>
 
         measuresList.add(measure)
 

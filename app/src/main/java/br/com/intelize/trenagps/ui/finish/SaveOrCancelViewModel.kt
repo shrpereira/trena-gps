@@ -6,6 +6,7 @@ import br.com.intelize.trenagps.common.rx.SingleLiveEvent
 import br.com.intelize.trenagps.data.MeasuresDatasource
 import br.com.intelize.trenagps.model.MeasureType
 import br.com.intelize.trenagps.model.MeasuredItem
+import java.util.*
 
 class SaveOrCancelViewModel(private val datasource: MeasuresDatasource) : ViewModel() {
 
@@ -16,7 +17,7 @@ class SaveOrCancelViewModel(private val datasource: MeasuresDatasource) : ViewMo
     }
 
     fun save(name: Editable?, value: CharSequence?, measureType: MeasureType.Type) {
-        datasource.addMeasure(MeasuredItem(measureType, name.toString(), value.toString()))
+        datasource.addMeasure(MeasuredItem(measureType, name.toString(), value.toString(), Date()))
         success.value = true
     }
 }

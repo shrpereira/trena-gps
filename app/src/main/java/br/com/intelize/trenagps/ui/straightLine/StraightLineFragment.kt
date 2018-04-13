@@ -15,6 +15,7 @@ import br.com.intelize.trenagps.R.color.textInitial
 import br.com.intelize.trenagps.R.drawable.shape_inner_circle
 import br.com.intelize.trenagps.R.drawable.shape_inner_circle_selected
 import br.com.intelize.trenagps.R.layout.fragment_straight_line
+import br.com.intelize.trenagps.model.MeasureType
 import br.com.intelize.trenagps.ui.main.MainActivity
 import br.com.intelize.trenagps.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.fragment_straight_line.*
@@ -23,79 +24,80 @@ import org.koin.android.architecture.ext.viewModel
 
 class StraightLineFragment : Fragment() {
 
-    private var measuring: Boolean = false
-    private lateinit var location: Location
-    private val viewModel by viewModel<StraightLineViewModel>()
+	private var measuring: Boolean = false
+	private lateinit var location: Location
+	private val viewModel by viewModel<StraightLineViewModel>()
 
-    companion object {
-        fun newInstance(): StraightLineFragment {
-            return StraightLineFragment()
-        }
-    }
+	companion object {
+		fun newInstance(): StraightLineFragment {
+			return StraightLineFragment()
+		}
+	}
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(fragment_straight_line, container, false)
+	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+		val view = inflater.inflate(fragment_straight_line, container, false)
 
-        (activity as MainActivity).getViewModel<MainViewModel>().location.observe(this, Observer {
-            it?.let {
-                location = it
-            }
-        })
+		(activity as MainActivity).getViewModel<MainViewModel>().location.observe(this, Observer {
+			it?.let {
+				accuracyTextView.text = getString(R.string.accuracy_meters, String.format("%.2f", it.accuracy))
+				location = it
+			}
+		})
 
-        viewModel.distance.observe(this, Observer {
-            it?.let {
-                if (it > 0.0) {
-                    setMeasuringOff()
-                    (activity as MainActivity).redirectToSaveScreen(it)
-                } else {
-                    setMeasuringOff()
-                    Toast.makeText(context, getString(R.string.you_should_move_yourself), Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
+		viewModel.distance.observe(this, Observer {
+			it?.let {
+				if (it > 0.0) {
+					setMeasuringOff()
+					(activity as MainActivity).redirectToSaveScreen(it, MeasureType.Type.STRAIGHT_LINE.ordinal)
+				} else {
+					setMeasuringOff()
+					Toast.makeText(context, getString(R.string.you_should_move_yourself), Toast.LENGTH_SHORT).show()
+				}
+			}
+		})
 
-        return view
-    }
+		return view
+	}
 
-    override fun onStart() {
-        super.onStart()
+	override fun onStart() {
+		super.onStart()
 
-        configureProgressBar()
-        configureAction()
-    }
+		configureProgressBar()
+		configureAction()
+	}
 
-    private fun configureAction() {
-        innerCircle.setOnClickListener({
-            if (measuring) viewModel.finishMeasuring(location) else setMeasuringOn()
-        })
-    }
+	private fun configureAction() {
+		innerCircle.setOnClickListener({
+			if (measuring) viewModel.finishMeasuring(location) else setMeasuringOn()
+		})
+	}
 
-    private fun configureProgressBar() {
-        context?.let { ContextCompat.getColor(it, R.color.colorDetails) }?.let {
-            actionProgressBar.indeterminateDrawable
-                    .setColorFilter(it, android.graphics.PorterDuff.Mode.MULTIPLY)
-        }
-    }
+	private fun configureProgressBar() {
+		context?.let { ContextCompat.getColor(it, R.color.colorDetails) }?.let {
+			actionProgressBar.indeterminateDrawable
+					.setColorFilter(it, android.graphics.PorterDuff.Mode.MULTIPLY)
+		}
+	}
 
-    private fun setMeasuringOn() {
-        measuring = true
+	private fun setMeasuringOn() {
+		measuring = true
 
-        viewModel.startMeasuring(location)
+		viewModel.startMeasuring(location)
 
-        actionButtonText.text = getString(R.string.stop)
-        context?.let { actionButtonText.setTextColor(ContextCompat.getColor(it, colorDetails)) }
-        actionProgressBar.visibility = View.VISIBLE
-        innerCircle.background = context?.let { ContextCompat.getDrawable(it, shape_inner_circle_selected) }
-        (activity as MainActivity).hidePagerDots()
-    }
+		actionButtonText.text = getString(R.string.stop)
+		context?.let { actionButtonText.setTextColor(ContextCompat.getColor(it, colorDetails)) }
+		actionProgressBar.visibility = View.VISIBLE
+		innerCircle.background = context?.let { ContextCompat.getDrawable(it, shape_inner_circle_selected) }
+//        (activity as MainActivity).hidePagerDots()
+	}
 
-    private fun setMeasuringOff() {
-        measuring = false
+	private fun setMeasuringOff() {
+		measuring = false
 
-        actionButtonText.text = getString(R.string.begin)
-        context?.let { actionButtonText.setTextColor(ContextCompat.getColor(it, textInitial)) }
-        actionProgressBar.visibility = View.GONE
-        innerCircle.background = context?.let { ContextCompat.getDrawable(it, shape_inner_circle) }
-        (activity as MainActivity).showPagerDots()
-    }
+		actionButtonText.text = getString(R.string.begin)
+		context?.let { actionButtonText.setTextColor(ContextCompat.getColor(it, textInitial)) }
+		actionProgressBar.visibility = View.GONE
+		innerCircle.background = context?.let { ContextCompat.getDrawable(it, shape_inner_circle) }
+//        (activity as MainActivity).showPagerDots()
+	}
 }
