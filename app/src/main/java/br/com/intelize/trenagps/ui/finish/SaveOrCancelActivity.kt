@@ -13,51 +13,51 @@ import org.koin.android.architecture.ext.viewModel
 
 class SaveOrCancelActivity : BaseActivity() {
 
-    private val viewModel by viewModel<SaveOrCancelViewModel>()
+	private val viewModel by viewModel<SaveOrCancelViewModel>()
 
-    private val measureType by lazy {
-        MeasureType.Type.values()[intent.getIntExtra(MEASURE_TYPE_EXTRA, 0)]
-    }
+	private val measureType by lazy {
+		MeasureType.Type.values()[intent.getIntExtra(MEASURE_TYPE_EXTRA, 0)]
+	}
 
-    private val measuredInputValue by lazy {
-        intent.getDoubleExtra(MEASURED_VALUE_EXTRA, 0.0)
-    }
+	private val measuredInputValue by lazy {
+		intent.getFloatExtra(MEASURED_VALUE_EXTRA, 0.0F)
+	}
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(activity_save_or_cancel)
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setContentView(activity_save_or_cancel)
 
-        configureActions()
-        configureUi()
+		configureActions()
+		configureUi()
 
-        viewModel.success.observe(this, Observer {
-            it?.let {
-                if (it) {
-                    setResult(Activity.RESULT_OK)
-                    onBackPressed()
-                }
-            }
-        })
-    }
+		viewModel.success.observe(this, Observer {
+			it?.let {
+				if (it) {
+					setResult(Activity.RESULT_OK)
+					onBackPressed()
+				}
+			}
+		})
+	}
 
-    private fun configureUi() {
-        measuredValue.text = String.format("%.2f", measuredInputValue)
-    }
+	private fun configureUi() {
+		measuredValue.text = String.format("%.2f", measuredInputValue)
+	}
 
-    private fun configureActions() {
-        saveButton.setOnClickListener { viewModel.save(measureName.text, measuredValue.text, measureType) }
-        configureDiscardButtonAction()
-    }
+	private fun configureActions() {
+		saveButton.setOnClickListener { viewModel.save(measureName.text, measuredValue.text, measureType) }
+		configureDiscardButtonAction()
+	}
 
-    private fun configureDiscardButtonAction() {
-        discardButton.setOnClickListener {
-            onBackPressed()
-        }
-    }
+	private fun configureDiscardButtonAction() {
+		discardButton.setOnClickListener {
+			onBackPressed()
+		}
+	}
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        overridePendingTransition(0, 0)
-        finish()
-    }
+	override fun onBackPressed() {
+		super.onBackPressed()
+		overridePendingTransition(0, 0)
+		finish()
+	}
 }

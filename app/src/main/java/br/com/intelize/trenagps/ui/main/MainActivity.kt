@@ -160,7 +160,7 @@ class MainActivity : BaseActivity() {
 //		tabDots.visibility = View.VISIBLE
 //	}
 
-	fun redirectToSaveScreen(value: Double, type: Int) {
+	fun redirectToSaveScreen(value: Float, type: Int) {
 		val intent = Intent(this, SaveOrCancelActivity::class.java)
 		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
 		intent.putExtra(MEASURE_TYPE_EXTRA, type)

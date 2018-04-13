@@ -55,7 +55,7 @@ class RealtimeFragment : Fragment() {
 
         viewModel.finalDistance.observe(this, Observer {
             it?.let {
-                if (it > 0.0) {
+                if (it > 0.0F) {
                     (activity as MainActivity).redirectToSaveScreen(it, MeasureType.Type.REALTIME.ordinal)
                 } else {
                     Toast.makeText(context, getString(R.string.you_should_move_yourself), Toast.LENGTH_SHORT).show()
