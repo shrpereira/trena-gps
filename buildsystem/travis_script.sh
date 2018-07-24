@@ -12,22 +12,12 @@ function fastlaneScripts {
 	fastlane android unitTests
 }
 
-function startEmulator {
-	echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a
-	emulator -avd test -no-audio -no-window &
-	android-wait-for-emulator
-	adb shell input keyevent 82 &
-}
-
 case $1 in
 "beforeInstall")
 	beforeInstall
 	;;
 "fastlaneScripts")
 	fastlaneScripts
-	;;
-"startEmulator")
-	startEmulator
 	;;
 *)
 	echo ""
