@@ -7,10 +7,13 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.helper.ItemTouchHelper
+import android.view.View
 import android.widget.Toast
 import br.com.intelize.trenagps.R
 import br.com.intelize.trenagps.TrenaApplication
 import br.com.intelize.trenagps.extensions.apply
+import br.com.intelize.trenagps.extensions.isNotNull
 import br.com.intelize.trenagps.model.MeasureType.Companion.MEASURE_TYPE_EXTRA
 import br.com.intelize.trenagps.model.MeasuredItem
 import br.com.intelize.trenagps.ui.base.BaseActivity
@@ -24,6 +27,9 @@ import com.pedrogomez.renderers.ListAdapteeCollection
 import com.pedrogomez.renderers.RVRendererAdapter
 import com.pedrogomez.renderers.RendererBuilder
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.noButton
+import org.jetbrains.anko.yesButton
 import org.koin.android.architecture.ext.viewModel
 import rx.Subscription
 
@@ -97,6 +103,9 @@ class MainActivity : BaseActivity() {
 	}
 
 	private fun updateMeasuresList(it: List<MeasuredItem>?) {
+		if (it.isNotNull() && it!!.isNotEmpty()) removeInstruction.visibility = View.VISIBLE
+		else removeInstruction.visibility = View.GONE
+
 		adapteeCollection.clear()
 		adapteeCollection.addAll(it)
 		adapter.notifyDataSetChanged()
@@ -110,6 +119,23 @@ class MainActivity : BaseActivity() {
 		val rendererBuilder = RendererBuilder<MeasuredItem>(renderer)
 		adapter = RVRendererAdapter(rendererBuilder, adapteeCollection)
 		measuresList.adapter = adapter
+
+		val swipeController = SwipeController {item ->
+			alert(getString(R.string.are_you_sure_you_want_to_delete_this_saved_measure_this_is_an_irreversible_action)) {
+				yesButton { deleteMeasure(item.adapterPosition) }
+				noButton { cancelMeasureDelete(item.adapterPosition) }
+			}.show()
+		}
+		val itemTouchHelper = ItemTouchHelper(swipeController)
+		itemTouchHelper.attachToRecyclerView(measuresList)
+	}
+
+	private fun deleteMeasure(position: Int) {
+		viewModel.removeMeasure(position)
+	}
+
+	private fun cancelMeasureDelete(position: Int) {
+		adapter.notifyItemChanged(position)
 	}
 
 	private fun startListeningForLocations() {

@@ -13,8 +13,11 @@
 	<string name="saved_successfully">Gravado com sucesso</string>
 	<string name="you_should_move_yourself">Você deve se mover.</string>
 	<string name="meters">metros</string>
+	<string name="x_meters">%1$s metros</string>
 	<string name="accuracy_meters">Precisão: %1$s</string>
 	<string name="understood">Entendi</string>
 	<string name="alert">Alerta</string>
 	<string name="the_accuracy_of_the_measurements_made_by_this_app_depends_totally_on_your_device_sensors_quality">A precisão das medidas realizadas por este aplicativo dependem totalmente da qualidade dos sensores presentes no seu dispositivo.</string>
+	<string name="are_you_sure_you_want_to_delete_this_saved_measure_this_is_an_irreversible_action">Você tem certeza que deseja excluir essa leitura salva? Essa ação é irreversível.</string>
+	<string name="swipe_to_delete">Delize para Remover</string>
 </resources>

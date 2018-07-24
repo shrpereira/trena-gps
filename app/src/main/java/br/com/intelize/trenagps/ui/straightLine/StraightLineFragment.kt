@@ -67,9 +67,9 @@ class StraightLineFragment : Fragment() {
 	}
 
 	private fun configureAction() {
-		innerCircle.setOnClickListener({
+		innerCircle.setOnClickListener {
 			if (measuring) viewModel.finishMeasuring(location) else setMeasuringOn()
-		})
+		}
 	}
 
 	private fun configureProgressBar() {

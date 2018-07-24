@@ -41,7 +41,7 @@ class MeasuredItemRenderer : Renderer<MeasuredItem>() {
 		}
 
 		titleView.text = content.name
-		distanceView.text = content.distance
+		distanceView.text = context.getString(R.string.x_meters, content.distance)
 		measurementDate.text = DateFormat.getDateInstance(DateFormat.SHORT).format(content.registerDt)
 		val time = DateFormat.getTimeInstance(DateFormat.SHORT).format(content.registerDt)
 		measurementTime.text = time.substring(0, time.length - 3)

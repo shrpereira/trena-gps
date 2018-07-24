@@ -6,29 +6,47 @@ import br.com.intelize.trenagps.model.MeasuredItem
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+private const val MEASURES_PREFERENCES = "measurePreferences"
+private const val MEASURES_LIST = "measuresList"
+
 class MeasuresDatasource {
 
-    companion object {
-        private const val MEASURES_PREFERENCES = "measurePreferences"
-        private const val MEASURES_LIST = "measuresList"
-    }
+	fun getMeasures(): List<MeasuredItem> {
+		val measures = TrenaApplication.getApplication().getSharedPreferences(MEASURES_PREFERENCES).getString(MEASURES_LIST, "")
 
-    fun getMeasures(): List<MeasuredItem> {
-        val measures = TrenaApplication.getApplication().getSharedPreferences(Companion.MEASURES_PREFERENCES).getString(MEASURES_LIST, "")
+		if (measures.isEmpty()) return ArrayList()
 
-        if (measures.isEmpty()) return ArrayList()
+		val listType = object : TypeToken<ArrayList<MeasuredItem>>() {}.type
+		return Gson().fromJson(measures, listType)
+	}
 
-        val listType = object : TypeToken<ArrayList<MeasuredItem>>() {}.type
-        return Gson().fromJson(measures, listType)
-    }
+	fun addMeasure(measure: MeasuredItem) {
+		val measuresList = getMeasures() as ArrayList<MeasuredItem>
 
-    fun addMeasure(measure: MeasuredItem) {
-        val measuresList = getMeasures() as ArrayList<MeasuredItem>
+		measuresList.add(measure)
 
-        measuresList.add(measure)
+		addMeasuresList(measuresList)
+	}
 
-        TrenaApplication.getApplication().getSharedPreferences(Companion.MEASURES_PREFERENCES).apply {
-            putString(MEASURES_LIST, Gson().toJson(measuresList))
-        }
-    }
+	fun removeMeasure(position: Int) {
+		val measures = getMeasures() as ArrayList<MeasuredItem>
+		measures.removeAt(position)
+
+		addMeasuresList(measures)
+	}
+
+	private fun addMeasuresList(measures: ArrayList<MeasuredItem>) {
+
+		clearMeasuresList()
+
+		TrenaApplication.getApplication().getSharedPreferences(MEASURES_PREFERENCES).apply {
+			putString(MEASURES_LIST, Gson().toJson(measures))
+		}
+	}
+
+	private fun clearMeasuresList() {
+		TrenaApplication.getApplication().getSharedPreferences(MEASURES_PREFERENCES).apply {
+			remove(MEASURES_LIST)
+		}
+	}
 }

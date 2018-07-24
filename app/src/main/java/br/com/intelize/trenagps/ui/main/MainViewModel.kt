@@ -8,14 +8,18 @@ import br.com.intelize.trenagps.model.MeasuredItem
 
 class MainViewModel(private val datasource: MeasuresDatasource) : ViewModel() {
 
-    val measuresList: MutableLiveData<List<MeasuredItem>> = MutableLiveData()
-    val location: MutableLiveData<Location> = MutableLiveData()
+	val measuresList: MutableLiveData<List<MeasuredItem>> = MutableLiveData()
+	val location: MutableLiveData<Location> = MutableLiveData()
 
-    fun getMeasures() {
-        measuresList.value = datasource.getMeasures()
-    }
+	fun getMeasures() {
+		measuresList.value = datasource.getMeasures()
+	}
 
-    fun setLocation(currentLocation: Location) {
-        location.value = currentLocation
-    }
+	fun setLocation(currentLocation: Location) {
+		location.value = currentLocation
+	}
+
+	fun removeMeasure(position: Int) {
+		datasource.removeMeasure(position)
+	}
 }
