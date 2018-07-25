@@ -21,5 +21,6 @@ class MainViewModel(private val datasource: MeasuresDatasource) : ViewModel() {
 
 	fun removeMeasure(position: Int) {
 		datasource.removeMeasure(position)
+		getMeasures()
 	}
 }
