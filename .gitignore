@@ -30,3 +30,5 @@ build/
 
 # Fastlane report
 fastlane/report.xml
+/app/release/output.json
+/buildsystem/keystore.jks
