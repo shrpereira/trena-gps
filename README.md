@@ -1,6 +1,8 @@
 # Trena GPS 
 [![Build Status](https://travis-ci.org/shrpereira/trena-gps-app.svg?branch=master)](https://travis-ci.org/shrpereira/trena-gps-app)
 
+Play Store: https://play.google.com/store/apps/details?id=br.com.intelize.trenagps
+
 This app is an update of an old project I've done several years ago and since I don't have the 
 source code anymore, I just choose to rewrite everything using new technologies and patterns.
 
