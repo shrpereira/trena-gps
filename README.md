@@ -25,3 +25,12 @@ The app was created using MVVM architecture with the help of Google Architecture
 ViewModel and LiveData following the Reactive and Repository Patterns.
 
 The dependency injection was achieved with the help of Koin library.
+
+## CI/CD
+
+The Continuous Integration have been initially configured and is building the app on Travis every
+time there's a PUSH to the repository. I'm using FastLane to automate the build because it's the
+tool I'm used to and that will let me to run more complex tasks in the future. 
+
+The next step is to finish the configuration to automatically build and deploy the app to the Play
+Store and as soon as I get automated tests done, run them before everything.
